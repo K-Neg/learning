@@ -1,3 +1,3 @@
 # learning
-Rep for current &amp; old tests and study
+Rep for current &amp; old study
 Tests and small projects
