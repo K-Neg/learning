@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<style>
+    :root {
+        --main-vid: 97vh;
+    }
+    html {
+        width: 100%;
+        height: 90%;
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding: 10px;
+        border: 0;
+
+    }
+    body {
+        margin: 0;
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    body #left {
+
+        display: grid;
+        grid-template-rows: 40vh 40vh;
+
+        grid-gap: 5vh;
+    }
+
+    #fk {
+        justify-content: flex-end;
+        width: 17vw;
+        height: 25vh;
+    }
+
+    body #right {
+        display: flex;
+        justify-content: right;
+        align-items: center;
+    }
+
+    button {
+        width: 20vw;
+        height: 35vh;
+    }
+
+    #scatter_area {
+        width: 20vw;
+        height: 35vh;
+    }
+    #right img {
+        width: var(--main-vid)*4/3;
+        height: var(--main-vid);
+    }
+</style>
+<!-- Add a svg area, empty -->
+<body>
+    <div id="left">
+        <!--<div class="x" id="scatter_area"></div>-->
+        <img class="x" id="fk" src="static/cap1.png" alt="">
+        <div class="x" id="space">
+            <button>BUTTON</button>
+        </div>
+    </div>
+    <div id="right"><img src="static/test_pic.jpg" alt="video"></div>
+</body>
+
+<!-- Load d3.js -->
+
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>
+<script src="static/sc2.js"></script>

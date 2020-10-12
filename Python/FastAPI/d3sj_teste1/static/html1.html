@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+
+        <div id="dips">
+            <p>aaaa</p>
+        </div>
+
+        <script type="text/javascript">
+
+            //---the websocket part--
+            var sock = null;
+            var displaynumber = null;
+            var tempdata = null;
+
+            window.onload = function () {
+                var wsuri;
+                displaynumber = document.getElementById('disp');
+
+                if (window.location.protocol === "file:") {
+                    wsuri = "ws://...:9000";
+                } else {
+                    wsuri = "ws://" + window.location.hostname + ":9000";
+                }
+
+                //set up a new websocket
+                if ("WebSocket" in window) {
+                    sock = new WebSocket(wsuri);
+                } else if ("MozWebSocket" in window) {
+                    sock = new MozWebSocket(wsuri);
+                } else {
+                    disp("Browser does not support WebSocket!");
+                    window.location = "http://autobahn.ws/unsupportedbrowser";
+                }
+
+                if (sock) {
+                    //sock.onopen = function() {};
+
+                    sock.onclose = function (e) {
+                        sock = null;
+                    };
+
+                    sock.onmessage = function (e) {
+                        // e.data will be sent as a string and need to be converted to object
+                        var jsondata = JSON.parse(e.data);
+                        tempdata = jsondata.temp;
+                        disp(tempdata + " C");
+                    };
+                }
+
+                function disp(m) {
+                    displaynumber.innerHTML = m;
+                }
+
+                //----This is the dial chart part
+
+                dialChart();
+
+                function dialChart() {
+                    var powerGauge = gauge('#power-gauge', {
+                        size: 300,
+                        clipWidth: 300,
+                        clipHeight: 300,
+                        ringWidth: 60,
+                        minValue: 0,
+                        maxValue: 100,
+                        transitionMs: 1000
+                    });
+
+                    powerGauge.render();
+
+                    function updateReadings() {
+                        powerGauge.update(tempdata);
+                    }
+
+                    updateReadings();
+                    setInterval(function () {
+                        updateReadings();
+                    }, 2 * 1000);
+                }
+            }
+        </script>
+
+    </body>
+</html>
