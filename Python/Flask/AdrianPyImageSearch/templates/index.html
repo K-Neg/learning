@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <style>
+      html {
+        width: 100%;
+        height: 100%;
+      }
+      body img {}
+    </style>
+    <title>Kim Video Surveillance</title>
+  </head>
+  <header>
+    <p>Kim's Video Surveillance</p>
+  </header>
+  <body>
+
+    <div id="left">
+      
+    </div>
+    <div id="right">
+      <img src="{{ url_for('video_feed') }}">
+    </div>
+  </body>
+</html>

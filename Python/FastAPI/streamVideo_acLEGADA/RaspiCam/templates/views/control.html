@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+{% set pageTitle = "Controle e video" %}
+{% set pageId = "page-control" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="static/styles/control.css">
+{% endblock styles %}
+
+{% block content %}
+    <div id="content">
+        <main>
+            <div id="left">
+
+                <fieldset>
+                    <legend>Movimentação</legend>
+                    <div class="fields">
+                        <button id="route-default" onclick="order('&mr')" type="button">
+                            <p>Rota 1</p>
+                        </button>
+                        <button id="stop-button" onclick="order('#ms')" type="button">
+                            <p>Stop</p>
+                        </button>
+                        <button onclick="order('&ml')" type="button">
+                            <p>Esquerda</p>
+                        </button>
+                        <button onclick="order('&mr')" type="button">
+                            <p>Direita</p>
+                        </button>
+                    </div>
+
+                </fieldset>
+
+                <fieldset>
+
+                    <legend>Video</legend>
+                    <div class="fields">
+                        <button onclick="record()" type="submit">
+                            <p>Gravar</p>
+                        </button>
+                        <button onclick="order('rec_start')" type="button">
+                            <p>Parar</p>
+                        </button>
+
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Câmera</legend>
+                    <div class="fields">
+                        <!--<label for="resolution">Resolução</label>-->
+                        <select name="resolution" id="resolution">
+                          
+                        {% for resolution in stuff.resolutions %}       
+                                <option value="{{ stuff.resolutions.value[loop.index] }}">
+                                    {{ stuff.resolutions.name[loop.index] }}
+                                </option>
+                        {% endfor %}
+
+                        </select>
+
+                        </select>
+                    </div>
+                </fieldset>
+
+            </div>
+
+            <div id="right">
+
+                <img id="video" src="http://{{ ip }}:{{ port }}/video_viewer" alt="VIDEO">
+
+            </div>
+
+        </main>
+    </div>
+{% endblock content %}
+
+{% block scripts %}
+    <script data="{{ ip }}:{{ port }}" id="script_1" type="text/javascript" src="static/scripts/control.js"></script>
+{% endblock scripts %}

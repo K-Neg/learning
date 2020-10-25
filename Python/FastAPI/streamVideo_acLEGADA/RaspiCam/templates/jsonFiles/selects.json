@@ -1,0 +1,16 @@
+{
+    "resolutions": {
+        "name": [
+            "resolutionName",
+            "720p",
+            "1080p",
+            "4k"
+        ],
+        "value": [
+            "valueToBeSend",
+            "r1",
+            "r2",
+            "r3"
+        ]
+    }
+}

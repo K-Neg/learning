@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% set pageTitle = "Help_Configurar" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="static/styles/config.css">
+{% endblock styles %}
+
+{% block content %}
+
+         <h1>WebSocket Chat</h1>
+        <form action="" onsubmit="sendMessage(event)">
+            <input type="text" id="messageText" autocomplete="off"/>
+            <button>Send</button>
+        </form>
+        <ul id='REEBO'>
+        </ul>
+
+        <h1>Members</h1>
+            <ul>
+            {% for user in users %}
+            <li><p>{{ user.username }}</p></li>
+            {% endfor %}
+            </ul>
+
+        <h2>M2</h2>
+        
+        <label for="weekday">Dia da semana</label>
+        <select name="weekday" id="weekday">
+       
+{% for day in days %}       
+        <option value="{{ days[loop.index0] }}">
+            {{ days[loop.index0] }}
+        </option>
+{% endfor %}
+
+           </select>
+
+          <h2>M3</h2>
+          {% for day in days %}
+        <p>{{ days[loop.index0] }}</p>
+        {% endfor %}
+
+
+{% endblock content %}
+
+                
+{% block scripts %}
+    <script type="text/javascript" src="static/scripts/config.js"></script>
+{% endblock scripts %}
+
+        

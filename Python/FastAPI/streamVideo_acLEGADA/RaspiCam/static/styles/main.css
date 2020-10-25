@@ -1,0 +1,25 @@
+/*
+    Main css rules included by jinja template
+*/
+
+:root {
+    --video_size: 80vh;
+    --colorBackground: lightgrey;
+    --mainWidth: 99vw;
+    --mainHeight: 100vh;
+    --headerHeight: 10vh;
+    --contentHeight: 86vh;
+  }
+
+#page-layout{
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}

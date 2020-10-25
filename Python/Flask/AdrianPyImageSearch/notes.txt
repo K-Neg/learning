@@ -1,0 +1,4 @@
+python webstreaming.py –-ip 0.0.0.0 –-port 8000 --f 32
+python webstreaming.py --ip 0.0.0.0 --port 8000
+webstreaming line 28 change camera 
+source kenv/Scripts/activate
