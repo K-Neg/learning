@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+{% extends "layout.html" %}
+
+{% set pageTitle = "Histórico & Gravações" %}
+{% set pageId = "hist" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="static/styles/hist.css">
+{% endblock styles %}
+
+{% block content %}
+
+    <header>
+
+        <a href="/"><img src="static/images/home.svg"></a>
+    </br>
+    <a href="/"><img src="static/images/help.svg"></a>
+</br>
+<a href="/"><img src="static/images/folder.svg"></a>
+
+</header>
+
+<main>
+
+<!--onclick="remove(\''.$row_id.'\')"-->
+
+<div id="left">
+
+    <ul id="navigation">
+        {% for item in navigation %}
+            <li>
+                <button onclick={{item.href}}>{{item.name}}</button>
+            </li>
+            <h1>{{item[loop.index]}}</h1>
+        {% endfor %}
+    </ul>
+
+</div>
+
+<div id="right">
+
+    <video id="movie" width="1300" height="800" autoplay="autoplay">
+        <source src="movie/4" type="video/mp4">
+    </div>
+
+</main>
+
+{% endblock content %}
+
+{% block scripts %}
+<script src="static/script/hist.js"></script>
+
+{% endblock scripts %}
+</html>
